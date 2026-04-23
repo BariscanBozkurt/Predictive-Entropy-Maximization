@@ -205,3 +205,15 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Debug and Log Files
+*.sh
+*.out
+*.log
+*.mat 
+*.ipynb_checkpoints*
+*Debug*
+*other_methods*
+*Copy*
+*TestImages*
+*PredictiveBSS_RGBImageSeparation_Example*
