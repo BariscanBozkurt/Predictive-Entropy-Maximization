@@ -192,7 +192,7 @@ def evaluate_taylor_surrogate_batch(model_C_y_list):
     }
 
 
-print("Running script PredictiveBSS_Correlated_Antisparse_10by5")
+print("Running script PredictiveBSS_Correlated_Antisparse_10by5 Taylor Error Analysis Tighter Bounds")
 
 if not os.path.exists("../Results"):
     os.mkdir("../Results")

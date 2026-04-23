@@ -14,6 +14,7 @@ from python_utils.python_utils import Timer
 if not os.path.exists("../Results"):
     os.mkdir("../Results")
 
+print("Running Predictive BSS Noisy NNSparse 10 by 5 Simulation")
 # RESULTS_DF = pd.DataFrame( columns = ['seed', 'Model', 'SINR', 'SNR', 'SNRinp', 'execution_time'])
 pickle_name_for_results = "predictive_bss_noisy_nnsparse_10by5_results.pkl"
 ### Setting of the simulation and the model hyperparameters.
@@ -54,19 +55,19 @@ online_corinfomax_hyperparam_dict = {
                 "presumed_domain" : "nnsparse",
                 ### Optimization parameters
                 "lambda_lateral" : 0.99,
-                "gamma_predictive" : 5,
+                "gamma_predictive" : 10,
                 ### Learning rates 
                 "lr_W" : 1 * 1e-1,
-                "neural_lr_start" : 0.1,
-                "neural_lr_stop" : 1e-3,
-                "stlambda_lr" : 0.1,
+                "neural_lr_start" : 0.9,
+                "neural_lr_stop" : 1e-9,
+                "stlambda_lr" : 1.0,
                 "neural_dynamics_iterations" : 250,
                 "neural_OUTPUT_COMP_TOL" : 1e-7,
                 ### Learning rate rules and decay parameters
                 "lr_W_rule" : "divide_by_log_index",
                 "lr_W_decay_divider" : 5000,
                 "neural_lr_rule" : "divide_by_loop_index",
-                "neural_lr_decay_divider" : 200,
+                "neural_lr_decay_divider" : 0.01,
                 ### Initial values for weights if provided, if not they will be initialized in the fit function 
                 "W" : None,
                 "B_y" : None,
@@ -74,6 +75,7 @@ online_corinfomax_hyperparam_dict = {
                 "debug_iteration_point" : 10000,
                 "plot_debug_during_training" : False,
 }
+
 ldmi_hyperparam_dict = {
                 "n_sources" :  NumberofSources,
                 "presumed_domain" : "nnsparse",

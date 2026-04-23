@@ -158,21 +158,22 @@ def plot_snr_performance(summary_df, x_axis_param='rho', title=None):
     """
     Revised generalized plotting function for publication-quality figures.
     - Accepts a custom title; otherwise uses defaults based on x_axis_param.
-    - Renames models and ensures 'PredictiveDecor (Ours)' is first in legend.
+    - Renames models and ensures 'PEM (Ours; Online)' is first in legend.
     - Benchmarks are ranked by mean performance and rendered as dashed lines.
     - Specific simulation values are used as x-ticks.
     """
     # 1. Preprocess Dataframe: Rename Models to Publication Standards
     name_mapping = {
-        'PredictiveDecorrBSS': 'PredictiveDecor (Ours)',
-        'PredictiveBSS': 'PredictiveDecor (Ours)',
-        'CorInfoMax': 'CorInfoMax',
-        'LDMIBSS': 'LD-InfoMax',
-        'LD-InfoMax': 'LD-InfoMax',
-        'ICA_InfoMax': 'ICA-InfoMax',
-        'ICA-InfoMax': 'ICA-InfoMax',
-        'BSMBSS': 'BSM',
-        'NSMBSS': 'NSM'
+        'PredictiveDecorrBSS': 'PEM (Ours; Online)',
+        'PredictiveBSS': 'PEM (Ours; Online)',
+        'CorInfoMax': 'CorInfoMax (Online)',
+        'CorInfoMaxBSS': 'CorInfoMax (Online)',
+        'LDMIBSS': 'CorInfoMax (Batch)',
+        'LD-InfoMax': 'CorInfoMax (Batch)',
+        'ICA_InfoMax': 'ICA-InfoMax (Batch)',
+        'ICA-InfoMax': 'ICA-InfoMax (Batch)',
+        'BSMBSS': 'BSM (Online)',
+        'NSMBSS': 'NSM (Online)',
     }
     
     plot_data = summary_df.reset_index()
@@ -185,17 +186,17 @@ def plot_snr_performance(summary_df, x_axis_param='rho', title=None):
     plt.figure(figsize=(13, 8), dpi=100)
     
     colors = {
-        'PredictiveDecor (Ours)': '#d62728',
-        'CorInfoMax': '#ff7f0e',
-        'LD-InfoMax': '#7f7f7f',
-        'ICA-InfoMax': '#1f77b4',
-        'BSM': '#2ca02c',
-        'NSM': '#9467bd'
+        'PEM (Ours; Online)': '#d62728',
+        'CorInfoMax (Online)': '#ff7f0e',
+        'CorInfoMax (Batch)': '#7f7f7f',
+        'ICA-InfoMax (Batch)': '#1f77b4',
+        'BSM (Online)': '#2ca02c',
+        'NSM (Online)': '#9467bd'
     }
 
     model_ranking = plot_data.groupby('Model')['mSNR_mean'].mean().sort_values(ascending=False)
-    sorted_benchmarks = [m for m in model_ranking.index if m != 'PredictiveDecor (Ours)']
-    final_order = ['PredictiveDecor (Ours)'] + sorted_benchmarks
+    sorted_benchmarks = [m for m in model_ranking.index if m != 'PEM (Ours; Online)']
+    final_order = ['PEM (Ours; Online)'] + sorted_benchmarks
 
     x_ticks = sorted(plot_data[x_axis_param].unique())
     
@@ -207,7 +208,7 @@ def plot_snr_performance(summary_df, x_axis_param='rho', title=None):
         mean = model_df['mSNR_mean']
         ci = model_df['mSNR_ci'] # This is now the 95% CI Margin
         
-        is_ours = (model == 'PredictiveDecor (Ours)')
+        is_ours = (model == 'PEM (Ours; Online)')
         plt.plot(x_vals, mean, label=model, color=colors.get(model, '#333333'), 
                  linestyle='-' if is_ours else '--', marker='o', 
                  linewidth=4.5 if is_ours else 2.5, markersize=10, zorder=10 if is_ours else 5)
@@ -238,6 +239,6 @@ def plot_snr_performance(summary_df, x_axis_param='rho', title=None):
     plt.xticks(ticks=x_ticks, labels=x_ticks, fontsize=20)
     plt.yticks(fontsize=20)
     plt.grid(True, linestyle=':', alpha=0.6)
-    plt.legend(fontsize=14, loc='best', frameon=True, shadow=True)
+    plt.legend(fontsize=18, loc='best', frameon=True, shadow=True)
     plt.tight_layout()
     return plt
