@@ -24,6 +24,7 @@ class PredictiveDecorrBSSFullGrad(PredictiveDecorrBSS):
         x, y,
         W, C_y, mu_y,
         gamma_predictive,
+        epsilon,
         neural_dynamics_iterations,
         neural_lr_start,
         neural_lr_stop,
@@ -38,7 +39,7 @@ class PredictiveDecorrBSSFullGrad(PredictiveDecorrBSS):
         # Diagonal / off-diagonal decomposition
         D_y = np.diag(C_y)
         O_y = C_y - np.diag(D_y)
-
+        D_y += epsilon 
         eps = 1e-6
         n = y.shape[0]
 

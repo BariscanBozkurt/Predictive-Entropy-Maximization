@@ -29,6 +29,7 @@ NumberofMixtures = NumberofSources + 5
 predictivebss_hyperparam_dict = {
                 "n_sources" :  NumberofSources,
                 "presumed_domain" : "nnantisparse",
+                "epsilon" : 1e-4,
                 ### Optimization parameters
                 "lambda_lateral" : 0.95,
                 "gamma_predictive" : 750,
