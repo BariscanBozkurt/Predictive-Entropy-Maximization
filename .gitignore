@@ -212,6 +212,8 @@ __marimo__/
 *.log
 *.mat 
 *.ipynb_checkpoints*
+*Results_Old*
+Results_OldOld*
 *Debug*
 *other_methods*
 *Copy*
