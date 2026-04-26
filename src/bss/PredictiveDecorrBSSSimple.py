@@ -7,11 +7,12 @@ import sys
 sys.path.append("..")
 from bss.BSSbase import BSSBaseClass
 
-class PredictiveDecorrBSS(BSSBaseClass):
+class PredictiveDecorrBSSSimple(BSSBaseClass):
 
     def __init__(self,
                  n_sources, 
                  presumed_domain = "nnantisparse",
+                 gamma_lateral = 1,
                  epsilon = 1e-5,
                  ### Optimization parameters
                  lambda_lateral = 0.99,
@@ -39,6 +40,7 @@ class PredictiveDecorrBSS(BSSBaseClass):
                  save_C_y_per_debug = False
                  ):
         self.n_sources = n_sources
+        self.gamma_lateral = gamma_lateral
         self.epsilon = epsilon  
         self.lambda_lateral = lambda_lateral
         self.gamma_predictive = gamma_predictive
@@ -83,7 +85,6 @@ class PredictiveDecorrBSS(BSSBaseClass):
         self.plot_debug_during_training = plot_debug_during_training
         self.save_C_y_per_debug = save_C_y_per_debug
         self.C_y_list = []
-        self.C_y_history = []
     #### Debugging functions for simulations if the ground truth source and mixing matrices are provide
 
     #### Neural dynamics algorithms for different source domains, e.g., sparse, simplex, etc.
@@ -100,6 +101,7 @@ class PredictiveDecorrBSS(BSSBaseClass):
                                         lr_rule="divide_by_loop_index",
                                         lr_decay_divider=200,
                                         neural_OUTPUT_COMP_TOL=1e-7,
+                                        gamma_lateral  = 1
                                         ):
         """
         Perform activity relaxation (inference) to find the optimal neural state 'y'.
@@ -149,7 +151,7 @@ class PredictiveDecorrBSS(BSSBaseClass):
 
             y_bar = y - mu_y
             # 2. Lateral Term: Implements normalized decorrelation
-            lateral = (np.dot(O_y, y_bar / (D_y + 1e-6)) - y_bar) / (D_y + 1e-6)
+            lateral = gamma_lateral*np.dot(O_y, y_bar) - (y_bar) / (D_y + 1e-6)
             
             # Combine gradients: Total force acting on the neural state
             grady = gamma_predictive * error + lateral
@@ -179,6 +181,7 @@ class PredictiveDecorrBSS(BSSBaseClass):
                                         lr_rule="divide_by_loop_index",
                                         lr_decay_divider=200,
                                         neural_OUTPUT_COMP_TOL=1e-7,
+                                        gamma_lateral  = 1
                                         ):
         """
         Perform activity relaxation (inference) to find the optimal neural state 'y'.
@@ -229,7 +232,7 @@ class PredictiveDecorrBSS(BSSBaseClass):
 
             y_bar = y - mu_y
             # 2. Lateral Term: Implements normalized decorrelation
-            lateral = (np.dot(O_y, y_bar / (D_y + 1e-6)) - y_bar) / (D_y + 1e-6)
+            lateral = gamma_lateral*np.dot(O_y, y_bar) - (y_bar) / (D_y + 1e-6)
             
             # Combine gradients: Total force acting on the neural state
             grady = gamma_predictive * error + lateral
@@ -259,6 +262,7 @@ class PredictiveDecorrBSS(BSSBaseClass):
                                     lr_rule="divide_by_loop_index",
                                     lr_decay_divider=200,
                                     neural_OUTPUT_COMP_TOL=1e-7,
+                                    gamma_lateral  = 1
                                     ):
         """
         Perform activity relaxation (inference) to find the optimal neural state 'y'.
@@ -310,7 +314,7 @@ class PredictiveDecorrBSS(BSSBaseClass):
 
             y_bar = y - mu_y
             # 2. Lateral Term: Implements normalized decorrelation
-            lateral = (np.dot(O_y, y_bar / D_y) - y_bar) / D_y
+            lateral = gamma_lateral*np.dot(O_y, y_bar) - (y_bar) / D_y
             
             # Combine gradients: Total force acting on the neural state
             grady = gamma_predictive * error + lateral
@@ -346,6 +350,7 @@ class PredictiveDecorrBSS(BSSBaseClass):
                                         lr_rule="divide_by_loop_index",
                                         lr_decay_divider=200,
                                         neural_OUTPUT_COMP_TOL=1e-7,
+                                        gamma_lateral  = 1
                                     ):
         """
         Perform activity relaxation (inference) to find the optimal neural state 'y'.
@@ -397,7 +402,7 @@ class PredictiveDecorrBSS(BSSBaseClass):
 
             y_bar = y - mu_y
             # 2. Lateral Term: Implements normalized decorrelation
-            lateral = (np.dot(O_y, y_bar / D_y) - y_bar) / D_y
+            lateral = gamma_lateral*np.dot(O_y, y_bar) - (y_bar) / D_y
             
             # Combine gradients: Total force acting on the neural state
             grady = gamma_predictive * error + lateral
@@ -432,6 +437,7 @@ class PredictiveDecorrBSS(BSSBaseClass):
                                     lr_rule="divide_by_loop_index",
                                     lr_decay_divider=200,
                                     neural_OUTPUT_COMP_TOL=1e-7,
+                                    gamma_lateral  = 1
                                     ):
         """
         Perform activity relaxation (inference) to find the optimal neural state 'y'.
@@ -483,7 +489,7 @@ class PredictiveDecorrBSS(BSSBaseClass):
 
             y_bar = y - mu_y
             # 2. Lateral Term: Implements normalized decorrelation
-            lateral = (np.dot(O_y, y_bar / D_y) - y_bar) / D_y
+            lateral = gamma_lateral*np.dot(O_y, y_bar) - (y_bar) / D_y
             
             # Combine gradients: Total force acting on the neural state
             grady = gamma_predictive * error + lateral
@@ -544,7 +550,8 @@ class PredictiveDecorrBSS(BSSBaseClass):
                                             stlambd_lr = self.stlambda_lr,
                                             lr_rule = self.neural_lr_rule,
                                             lr_decay_divider = self.neural_lr_decay_divider,
-                                            neural_OUTPUT_COMP_TOL = self.neural_OUTPUT_COMP_TOL)
+                                            neural_OUTPUT_COMP_TOL = self.neural_OUTPUT_COMP_TOL,
+                                            gamma_lateral=self.gamma_lateral)
                 # Update the feedforward weights based on the current neural state and input
                 # Here we use a simple Hebbian update rule modulated by the predictive error
                 error = y - self.W @ x_current
@@ -559,7 +566,6 @@ class PredictiveDecorrBSS(BSSBaseClass):
                 self.mu_y = self.lambda_lateral * self.mu_y + (1 - self.lambda_lateral) * y # Exponential moving average to track the mean of the extracted sources
                 y_bar = y - self.mu_y
                 self.C_y = self.lambda_lateral * self.C_y + (1 - self.lambda_lateral) * np.outer(y_bar, y_bar)
-                self.C_y_history.append(self.C_y.copy())
 
     def predict(self, X):
         return self.W @ X

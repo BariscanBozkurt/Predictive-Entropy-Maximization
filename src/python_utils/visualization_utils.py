@@ -168,6 +168,7 @@ def plot_snr_performance(summary_df, x_axis_param='rho', title=None):
         'PredictiveBSS': 'PEM (Ours; Online)',
         'CorInfoMax': 'CorInfoMax (Online)',
         'CorInfoMaxBSS': 'CorInfoMax (Online)',
+        'PredictiveDecorrBSSSimple' : 'uPEM (Ours; Online)',
         'LDMIBSS': 'CorInfoMax (Batch)',
         'LD-InfoMax': 'CorInfoMax (Batch)',
         'ICA_InfoMax': 'ICA-InfoMax (Batch)',
@@ -191,12 +192,13 @@ def plot_snr_performance(summary_df, x_axis_param='rho', title=None):
         'CorInfoMax (Batch)': '#7f7f7f',
         'ICA-InfoMax (Batch)': '#1f77b4',
         'BSM (Online)': '#2ca02c',
-        'NSM (Online)': '#9467bd'
+        'NSM (Online)': '#9467bd',
+        'uPEM (Ours; Online)': "#c49c94",
     }
 
     model_ranking = plot_data.groupby('Model')['mSNR_mean'].mean().sort_values(ascending=False)
-    sorted_benchmarks = [m for m in model_ranking.index if m != 'PEM (Ours; Online)']
-    final_order = ['PEM (Ours; Online)'] + sorted_benchmarks
+    sorted_benchmarks = [m for m in model_ranking.index if (m != 'PEM (Ours; Online)' and m != 'uPEM (Ours; Online)')]
+    final_order = ['PEM (Ours; Online)'] + ["uPEM (Ours; Online)"] + sorted_benchmarks
 
     x_ticks = sorted(plot_data[x_axis_param].unique())
     
