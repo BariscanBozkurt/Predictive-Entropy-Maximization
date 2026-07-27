@@ -50,8 +50,8 @@ predictivebss_hyperparam_dict = {
 
 ### We consider the UNDERDETERMINED case: fewer mixtures than sources.
 number_of_mixtures_list = [4, 3]
-### We run the experiment over 10 different random mixing matrices (10 seeds).
-seed_list = np.arange(0, 10)
+### We run the experiment over 30 different random mixing matrices (30 seeds).
+seed_list = np.arange(0, 30)
 
 results_data = []
 for NumberofMixtures in number_of_mixtures_list:
@@ -97,12 +97,17 @@ for NumberofMixtures in number_of_mixtures_list:
         ##################################################
         ####### MMSE (WIENER) ORACLE ESTIMATOR ###########
         ##################################################
-        # The MMSE (Wiener) estimator is the best achievable LINEAR reconstruction.
-        # It knows the mixing matrix A, the source covariance R_s, and the noise covariance R_n.
+        # The MMSE (Wiener) estimator is the best achievable LINEAR reconstruction of the sources from
+        # the mixtures. It is the least-squares regression of the sources onto the mixtures and depends
+        # only on second-order statistics: the mixture (input) covariance R_xx = E[x x^T] and the
+        # source-mixture cross-covariance R_sx = E[s x^T]. It does NOT need the mixing matrix A -- if A
+        # were known, recovering the sources would be trivial via its pseudo-inverse. (For x = A s + n
+        # this equals the classical R_s A^T (A R_s A^T + R_n)^{-1}, since R_sx = R_s A^T and
+        # R_xx = A R_s A^T + R_n, but we form it directly from covariances.)
         # In the underdetermined case this is the fundamental ceiling for any linear separator (PEM included).
-        R_s = (S @ S.T) / N                       # source covariance matrix
-        R_n = (NoisePart @ NoisePart.T) / N       # noise covariance matrix
-        W_mmse = R_s @ A.T @ np.linalg.inv(A @ R_s @ A.T + R_n)   # Wiener filter (NumberofSources x NumberofMixtures)
+        R_xx = (X @ X.T) / N                      # mixture (input) covariance matrix
+        R_sx = (S @ X.T) / N                      # source-mixture cross-covariance matrix
+        W_mmse = R_sx @ np.linalg.inv(R_xx)       # Wiener filter (NumberofSources x NumberofMixtures)
         Y_mmse = W_mmse @ X
 
         Y_mmse = BSSBaseClass().signed_and_permutation_corrected_sources(S, Y_mmse) # Find sign and permutation ambiguity
