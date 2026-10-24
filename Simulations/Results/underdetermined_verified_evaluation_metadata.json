@@ -1,0 +1,284 @@
+{
+  "PEM_alignment_changed_source_rows": 88,
+  "PEM_alignment_changed_trials": 56,
+  "PEM_score_changed_rows_above_1e-8dB": 88,
+  "aggregation_script_sha256": "8bb129078ae9b41e1a4fafec2671643cac83ed0b045770894de04954bc2d3233",
+  "all_warnings": [],
+  "evaluation_protocol": {
+    "PEM_matching": "one-to-one Hungarian maximum absolute centered Pearson correlation",
+    "PEM_scale": "per-source uncentered least-squares scalar gain",
+    "SNR": "10 log10(sum(s_i^2)/sum((s_i\u2212estimate_i)^2))",
+    "reference": "empirical least-squares linear predictor fitted from same S,X without intercept or rematching; W_ls=solve(X@X.T,(S@X.T).T).T",
+    "table_statistics": "independently sort five scores within method/trial; aggregate ranks across30 seeds; sample std ddof=1"
+  },
+  "grouped_summary": [
+    {
+      "ls_mean": 12.194799229924886,
+      "ls_std_of_trial_group_means": 2.3704151319138673,
+      "num_mixtures": 4,
+      "num_ranks": 4,
+      "pem_mean": 10.05951273188935,
+      "pem_minus_ls_mean_db": -2.1352864980355366,
+      "pem_std_of_trial_group_means": 3.198609154824616,
+      "rank_group": "top_m"
+    },
+    {
+      "ls_mean": 2.527158872964842,
+      "ls_std_of_trial_group_means": 1.1100570637613603,
+      "num_mixtures": 4,
+      "num_ranks": 1,
+      "pem_mean": 1.049696972715772,
+      "pem_minus_ls_mean_db": -1.4774619002490696,
+      "pem_std_of_trial_group_means": 0.8072115800377977,
+      "rank_group": "bottom_n_minus_m"
+    },
+    {
+      "ls_mean": 7.627447964559761,
+      "ls_std_of_trial_group_means": 1.9546071741233175,
+      "num_mixtures": 3,
+      "num_ranks": 3,
+      "pem_mean": 5.658949315698057,
+      "pem_minus_ls_mean_db": -1.9684986488617027,
+      "pem_std_of_trial_group_means": 1.7214941873032534,
+      "rank_group": "top_m"
+    },
+    {
+      "ls_mean": 1.9386752634584588,
+      "ls_std_of_trial_group_means": 0.6179400923087918,
+      "num_mixtures": 3,
+      "num_ranks": 2,
+      "pem_mean": 1.134284559915804,
+      "pem_minus_ls_mean_db": -0.8043907035426544,
+      "pem_std_of_trial_group_means": 0.5524485683355596,
+      "rank_group": "bottom_n_minus_m"
+    }
+  ],
+  "hyperparameters": {
+    "C_y": null,
+    "W": null,
+    "debug_iteration_point": 25000,
+    "gamma_predictive": 250,
+    "lambda_lateral": 0.999,
+    "lr_W": 0.05,
+    "lr_W_decay_divider": 5000,
+    "lr_W_rule": "divide_by_log_index",
+    "mu_y": null,
+    "n_sources": 5,
+    "neural_OUTPUT_COMP_TOL": 1e-07,
+    "neural_dynamics_iterations": 250,
+    "neural_lr_decay_divider": 200,
+    "neural_lr_rule": "divide_by_loop_index",
+    "neural_lr_start": 0.5,
+    "neural_lr_stop": 1e-06,
+    "plot_debug_during_training": false,
+    "presumed_domain": "antisparse"
+  },
+  "hyperparameters_unchanged": true,
+  "independent_ls_audit_m4": {
+    "LS_SSE": [
+      177.85233399033137,
+      2153.0114196879244,
+      2921.252954269921,
+      223.3461196682057,
+      28185.12910350892
+    ],
+    "PEM_SSE": [
+      195.26412349607315,
+      6184.4331309997315,
+      2935.039058324428,
+      226.4563267722301,
+      29062.370580132734
+    ],
+    "PEM_error_equals_LS_error_plus_distance_relative_max_error": 4.044203206497021e-15,
+    "direct_lstsq_W_vs_normal_equations_max_absdiff": 4.218847493575595e-15,
+    "distance_squared": [
+      17.41178950574229,
+      4031.421711311832,
+      13.786104054506707,
+      3.1102071040248442,
+      877.2414766238217
+    ],
+    "m": 4,
+    "normal_equations_residual_max_abs": 1.650708458811323e-10,
+    "seed": 0
+  },
+  "legacy_ls_alignment_duplicate_trials": 35,
+  "legacy_pem_alignment_duplicate_trials": 56,
+  "max_legacy_LS_reproduction_absdiff_original_db": 1.4210854715202004e-13,
+  "max_legacy_pem_reproduction_absdiff_original_db": 0.00026056961904008524,
+  "max_ls_minus_pem_db": 12.326920798417685,
+  "max_normal_equation_relative_residual": 5.275923123105986e-15,
+  "max_pem_minus_ls_db": -0.00513381349168629,
+  "max_rank_mean_ls_minus_pem_db": 2.960277198316435,
+  "max_reference_optimal_gain_diff_from1": 2.930988785010413e-14,
+  "max_reference_solve_vs_inverse_W_absdiff": 4.9960036108132044e-15,
+  "mean_ls_minus_pem_db_over_all_source_rows": 1.7532885246061631,
+  "model_state_artifact": "underdetermined_verified_model_states.npz",
+  "model_state_sha256": "1df9a248cc8e4edf4198285097e8ba6742c73fe043ba306e2529e6bb662b52df",
+  "num_source_rows": 300,
+  "num_trials": 60,
+  "original_csv_hash_matches_manifest": true,
+  "original_csv_sha256": "49a140ed729e8412b4ade7e84e6b9fecedf2302b19779a69e7e180d667a9aadb",
+  "reference_rematched_source_rows": 44,
+  "reference_score_changed_rows_above_1e-8dB": 44,
+  "repository_driver_evaluation_verified_on_all_saved_trials": {
+    "max_pem_score_difference_db": 0.0,
+    "max_reference_score_difference_db": 3.552713678800501e-15,
+    "number_of_trials": 60
+  },
+  "reproduction_script_sha256": "45eb735e6c4310c8563a5af851023471dd501643d8f6f194ef5cce9efda48250",
+  "software_versions": {
+    "IPython": "8.38.0",
+    "matplotlib": "3.10.8",
+    "numba": "0.63.1",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "tqdm": "4.67.3"
+  },
+  "source_rows_above_ls_reference_by_more_than_1e-8dB": 0,
+  "source_sha256": {
+    "Simulations/PredictiveBSS/PredictiveBSS_Underdetermined_MMSE_Comparison.py": "2387602a604105204cdbb1efa599e27a54b8b0a6c76c50c90c23b7403b63fc58",
+    "src/bss/BSSbase.py": "b6361a80cc6c90d8b22fb36940c1b3ae13f9b302fd51b49d228791c15ddefaea",
+    "src/bss/PredictiveDecorrBSS.py": "1269aeef0e38c69f9a70104514dcd324cf256d1dfb94a4ed86be309ccf431368",
+    "src/bss/bss_utils.py": "83fd61c77292ca193aa0045068b9cb8c5ebd0e449994e31f1a439baec316a4ab"
+  },
+  "table": [
+    {
+      "ls_mean": 18.878014279959523,
+      "ls_std": 4.4816147769453005,
+      "num_mixtures": 4,
+      "pem_mean": 16.945647790446113,
+      "pem_minus_ls_mean_db": -1.9323664895134032,
+      "pem_std": 5.350436201584195,
+      "sorted_rank": 1
+    },
+    {
+      "ls_mean": 13.59032456367932,
+      "ls_std": 3.6094078077954697,
+      "num_mixtures": 4,
+      "pem_mean": 11.739619926231,
+      "pem_minus_ls_mean_db": -1.850704637448319,
+      "pem_std": 4.272324709158235,
+      "sorted_rank": 2
+    },
+    {
+      "ls_mean": 10.025655849823044,
+      "ls_std": 3.05760427115707,
+      "num_mixtures": 4,
+      "pem_mean": 7.374556728756343,
+      "pem_minus_ls_mean_db": -2.651099121066699,
+      "pem_std": 3.502274056522921,
+      "sorted_rank": 3
+    },
+    {
+      "ls_mean": 6.285202226237664,
+      "ls_std": 1.6838530737313695,
+      "num_mixtures": 4,
+      "pem_mean": 4.178226482123944,
+      "pem_minus_ls_mean_db": -2.1069757441137225,
+      "pem_std": 2.028470716137471,
+      "sorted_rank": 4
+    },
+    {
+      "ls_mean": 2.527158872964842,
+      "ls_std": 1.1100570637613603,
+      "num_mixtures": 4,
+      "pem_mean": 1.049696972715772,
+      "pem_minus_ls_mean_db": -1.4774619002490696,
+      "pem_std": 0.8072115800377977,
+      "sorted_rank": 5
+    },
+    {
+      "ls_mean": 11.50274431956268,
+      "ls_std": 3.31436686469271,
+      "num_mixtures": 3,
+      "pem_mean": 8.542467121246245,
+      "pem_minus_ls_mean_db": -2.9602771983164358,
+      "pem_std": 2.8737307285600426,
+      "sorted_rank": 1
+    },
+    {
+      "ls_mean": 7.047858249789993,
+      "ls_std": 2.843422587291794,
+      "num_mixtures": 3,
+      "pem_mean": 5.319472486071447,
+      "pem_minus_ls_mean_db": -1.7283857637185447,
+      "pem_std": 2.1616556837062313,
+      "sorted_rank": 2
+    },
+    {
+      "ls_mean": 4.331741324326608,
+      "ls_std": 1.2627231258758749,
+      "num_mixtures": 3,
+      "pem_mean": 3.1149083397764796,
+      "pem_minus_ls_mean_db": -1.2168329845501273,
+      "pem_std": 1.3154550027605092,
+      "sorted_rank": 3
+    },
+    {
+      "ls_mean": 2.4457775958916286,
+      "ls_std": 0.8199249811265334,
+      "num_mixtures": 3,
+      "pem_mean": 1.6176406805463404,
+      "pem_minus_ls_mean_db": -0.828136915345289,
+      "pem_std": 0.6575116013287238,
+      "sorted_rank": 4
+    },
+    {
+      "ls_mean": 1.4315729310252872,
+      "ls_std": 0.6945563378290719,
+      "num_mixtures": 3,
+      "pem_mean": 0.6509284392852676,
+      "pem_minus_ls_mean_db": -0.7806444917400199,
+      "pem_std": 0.6034354013940093,
+      "sorted_rank": 5
+    }
+  ],
+  "table_definition": "Within each trial, independently sort per-source scores for each method from largest to smallest; mean and sample standard deviation ddof=1 over30seeds at each rank. Ranks are order statistics, not paired source identities.",
+  "trial_protocol": {
+    "N": 100000,
+    "mixture_counts": [
+      4,
+      3
+    ],
+    "n_epochs": 1,
+    "num_sources": 5,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ],
+    "shuffle_samples": false,
+    "source_domain": "independent uniform[-1,1]",
+    "target_input_SNR_dB": 30
+  },
+  "updated_driver_sha256": "abb3a7bd106103d8b3fd249de1780f7525987caab73177e25554e35ee608b960",
+  "verified_csv_sha256": "ad8a391d81d460ba3a0501b90cb797ce1e0d4263af0a4bb7d61f43a72d9e8410"
+}

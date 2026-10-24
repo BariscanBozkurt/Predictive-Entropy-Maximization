@@ -4,17 +4,43 @@ sys.path.append("../../src")
 
 import numpy as np
 import pandas as pd
+from scipy.optimize import linear_sum_assignment
 
 from bss.bss_utils import generate_uncorrelated_uniform_sources, addWGN
-from bss.BSSbase import BSSBaseClass
 from bss.PredictiveDecorrBSS import PredictiveDecorrBSS
 from python_utils.python_utils import Timer
+
+
+def align_sources_one_to_one(S, Y):
+    """Match PEM outputs bijectively, then fit one signed LS gain per source."""
+    S_centered = S - S.mean(axis=1, keepdims=True)
+    Y_centered = Y - Y.mean(axis=1, keepdims=True)
+    denominator = np.outer(np.linalg.norm(S_centered, axis=1),
+                           np.linalg.norm(Y_centered, axis=1))
+    correlation = np.divide(S_centered @ Y_centered.T, denominator,
+                            out=np.zeros_like(denominator), where=denominator > 0)
+    rows, columns = linear_sum_assignment(-np.abs(correlation))
+    permutation = np.empty(S.shape[0], dtype=int)
+    permutation[rows] = columns
+    matched = Y[permutation]
+    energy = np.sum(matched ** 2, axis=1)
+    gains = np.divide(np.sum(S * matched, axis=1), energy,
+                      out=np.zeros_like(energy), where=energy > 0)
+    return gains[:, None] * matched
+
+
+def component_snr(S, Y):
+    """Source-indexed waveform SNR after the explicitly chosen alignment."""
+    return 10 * np.log10(np.sum(S ** 2, axis=1) /
+                         np.sum((S - Y) ** 2, axis=1))
+
 
 print("Running script PredictiveBSS_Underdetermined_MMSE_Comparison")
 if not os.path.exists("../Results"):
     os.mkdir("../Results")
 
-csv_name_for_results = "predictive_bss_underdetermined_mmse_comparison_results.csv"
+# Preserve the historical CSV; verified evaluation has a separate destination.
+csv_name_for_results = "predictive_bss_underdetermined_mmse_comparison_verified_results.csv"
 
 ### Setting of the simulation.
 N = 100000
@@ -83,46 +109,33 @@ for NumberofMixtures in number_of_mixtures_list:
         with Timer() as t:
             model = PredictiveDecorrBSS(**predictivebss_hyperparam_dict,
                                         Sgt = S)
-            model.fit(X)
+            model.fit(X, n_epochs=1, shuffle_samples=False)
 
-        Y_pem = model.predict(X)
-        Y_pem = model.signed_and_permutation_corrected_sources(S, Y_pem) # Find sign and permutation ambiguity
-        coef_pem = ((Y_pem * S).sum(axis=1) / (Y_pem * Y_pem).sum(axis=1)).reshape(-1, 1) # Find if the extracted signals need some amplification! The networks learned weight may need amplification due to lateral connections during the neural dynamics!
-        Y_pem = coef_pem * Y_pem
-
-        pem_overall_sinr = model.ComputeSINR(S, Y_pem)
-        pem_component_snr = model.ComputeSNR(S, Y_pem)
+        Y_pem = align_sources_one_to_one(S, model.predict(X))
+        pem_component_snr = component_snr(S, Y_pem)
         print("PEM Component Signal-to-Noise-Ratio (SNR) Values : {}".format(pem_component_snr))
 
         ##################################################
-        ####### MMSE (WIENER) ORACLE ESTIMATOR ###########
+        ####### EMPIRICAL LINEAR-MMSE REFERENCE #########
         ##################################################
-        # The MMSE (Wiener) estimator is the best achievable LINEAR reconstruction of the sources from
-        # the mixtures. It is the least-squares regression of the sources onto the mixtures and depends
-        # only on second-order statistics: the mixture (input) covariance R_xx = E[x x^T] and the
-        # source-mixture cross-covariance R_sx = E[s x^T]. It does NOT need the mixing matrix A -- if A
-        # were known, recovering the sources would be trivial via its pseudo-inverse. (For x = A s + n
-        # this equals the classical R_s A^T (A R_s A^T + R_n)^{-1}, since R_sx = R_s A^T and
-        # R_xx = A R_s A^T + R_n, but we form it directly from covariances.)
-        # In the underdetermined case this is the fundamental ceiling for any linear separator (PEM included).
-        R_xx = (X @ X.T) / N                      # mixture (input) covariance matrix
-        R_sx = (S @ X.T) / N                      # source-mixture cross-covariance matrix
-        W_mmse = R_sx @ np.linalg.inv(R_xx)       # Wiener filter (NumberofSources x NumberofMixtures)
+        # Ground-truth-assisted, zero-intercept least squares on the SAME evaluation samples.
+        # These are empirical second moments, not known population covariances. The reference
+        # minimizes each source's in-sample linear-prediction error. Its rows already correspond
+        # to the physical sources, so do not rematch, flip, or rescale them.
+        R_xx = (X @ X.T) / N
+        R_sx = (S @ X.T) / N
+        W_mmse = np.linalg.solve(R_xx, R_sx.T).T
         Y_mmse = W_mmse @ X
-
-        Y_mmse = BSSBaseClass().signed_and_permutation_corrected_sources(S, Y_mmse) # Find sign and permutation ambiguity
-        coef_mmse = ((Y_mmse * S).sum(axis=1) / (Y_mmse * Y_mmse).sum(axis=1)).reshape(-1, 1) # amplitude correction (same as PEM)
-        Y_mmse = coef_mmse * Y_mmse
-
-        mmse_overall_sinr = BSSBaseClass().ComputeSINR(S, Y_mmse)
-        mmse_component_snr = BSSBaseClass().ComputeSNR(S, Y_mmse)
-        print("MMSE Component Signal-to-Noise-Ratio (SNR) Values : {}\n".format(mmse_component_snr))
+        mmse_component_snr = component_snr(S, Y_mmse)
+        assert np.isfinite(pem_component_snr).all() and np.isfinite(mmse_component_snr).all()
+        assert np.all(pem_component_snr <= mmse_component_snr + 1e-8)
+        print("Empirical LMMSE Component SNR Values : {}\n".format(mmse_component_snr))
 
         ##################################################
         ####### SAVE THE PER-SOURCE RESULTS ##############
         ##################################################
         # We store one row per source so that the visualization notebook can sort the per-source
-        # SNR values (e.g. by recoverability) and average them over the 10 random mixing matrices.
+        # SNR values independently within each method/trial and aggregate over 30 seeds.
         for source_index in range(NumberofSources):
             result_dict_current = {
                 'num_sources': NumberofSources,
@@ -130,9 +143,7 @@ for NumberofMixtures in number_of_mixtures_list:
                 'seed': seed,
                 'source_index': source_index,
                 'pem_component_snr': pem_component_snr[source_index],
-                'mmse_component_snr': mmse_component_snr[source_index],
-                'pem_overall_sinr': pem_overall_sinr,
-                'mmse_overall_sinr': mmse_overall_sinr,
+                'ls_reference_component_snr': mmse_component_snr[source_index],
                 'input_snr': SNRinp,
                 'pem_execution_time': t.interval,
             }

@@ -1,0 +1,315 @@
+{
+  "comparison": "same sign/permutation-aligned estimates and one full-waveform LS gain for both views",
+  "display": {
+    "dB_range": [
+      -80,
+      0
+    ],
+    "dB_reference": "ground-truth peak shared within each source pair",
+    "frequency_hz": [
+      0,
+      8000
+    ],
+    "raster_dpi": 600,
+    "spectrogram_duration_seconds": [
+      0,
+      5
+    ],
+    "temporal_excerpt_samples": [
+      5500,
+      6600
+    ]
+  },
+  "duration_seconds": 5,
+  "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+  "sampling_rate_hz": 16000,
+  "source_hashes": {
+    "src/bss/BSSbase.py": "b6361a80cc6c90d8b22fb36940c1b3ae13f9b302fd51b49d228791c15ddefaea",
+    "src/bss/PredictiveDecorrBSS.py": "1269aeef0e38c69f9a70104514dcd324cf256d1dfb94a4ed86be309ccf431368",
+    "src/python_utils/dsp_utils.py": "dfc6a9b9d8c8bf06ee602fbd32bd9ece3c0b4a08234ff535145681d26ef41d4b"
+  },
+  "source_names": [
+    "fishin",
+    "pistachio",
+    "vibeace"
+  ],
+  "spectral_metric": "10 log10(sum(M_reference**2) / sum((M_reference-M_estimate)**2)), linear magnitudes, all bins",
+  "stft": {
+    "center": true,
+    "hop_length": 256,
+    "n_fft": 1024,
+    "pad_mode": "constant",
+    "win_length": 1024,
+    "window": "hann"
+  },
+  "verified_training_run": {
+    "W": [
+      [
+        0.6015841879992284,
+        0.713894681276761,
+        -0.590723638027288,
+        -0.11482625136499336,
+        0.559890658319037
+      ],
+      [
+        -0.24118616041709603,
+        0.49882443285136724,
+        -0.06494409011763669,
+        0.5370369518286703,
+        -1.849817372093619
+      ],
+      [
+        -1.3577423808266276,
+        1.0217617203871543,
+        0.9372974022677801,
+        0.1614656959094217,
+        0.43696316378470745
+      ]
+    ],
+    "W_matches_notebook_3decimal": true,
+    "alignment": {
+      "LS_gains": [
+        0.3816739786971268,
+        0.39727272002668157,
+        0.41079621708313174
+      ],
+      "notebook_helper_permutation": [
+        2,
+        1,
+        0
+      ],
+      "unique": true
+    },
+    "alignment_audit_file": "alignment_audit.json",
+    "audio_files": {
+      "fishin": {
+        "decoded_dtype": "float32",
+        "decoded_sample_count": 80000,
+        "decoded_sha256": "0be1d2ccb53e96b2e2049ef0085111bc9882a292db7e5b2fd020d48da7b5d016",
+        "filename": "Karissa_Hobbs_-_Lets_Go_Fishin.ogg",
+        "sample_rate": 16000,
+        "sha256": "27b3667c396c1831511aa3c415fcf582b6e8be560cafb844c5b67b76b72c1cb3"
+      },
+      "pistachio": {
+        "decoded_dtype": "float32",
+        "decoded_sample_count": 80000,
+        "decoded_sha256": "ee92abd874c777e431c402159db86097e1b014b9c40ec939bf90cc6372c4f82d",
+        "filename": "442789__lena-orsa__happy-music-pistachio-ice-cream-ragtime.ogg",
+        "sample_rate": 16000,
+        "sha256": "9617c9be55c128177b13c20fbc52178ed482e3545094517efb30a7db2798991e"
+      },
+      "vibeace": {
+        "decoded_dtype": "float32",
+        "decoded_sample_count": 80000,
+        "decoded_sha256": "0f9d888b3d7e669f4dd4343b1da0bacae477e42fd490898bf67bb72a0e79c039",
+        "filename": "Kevin_MacLeod_-_Vibe_Ace.ogg",
+        "sample_rate": 16000,
+        "sha256": "6c23aed3dd5aa57f2b1652ecab68d15d9b82ad257f54e639eb2880ca09bc118a"
+      }
+    },
+    "audio_load": {
+      "duration": 5,
+      "librosa_load_kwargs": "duration=5,sr=16000; all remaining defaults unchanged",
+      "sr": 16000
+    },
+    "cache_settings": {
+      "LIBROSA_DATA_DIR": "/tmp/pem_sound_camera_ready_run/cache",
+      "MPLCONFIGDIR": "/tmp/pem_sound_camera_ready_run/mplconfig",
+      "NUMBA_CACHE_DIR": "/tmp/pem_sound_camera_ready_run/numba_cache"
+    },
+    "config": {
+      "C_y": null,
+      "W": null,
+      "debug_iteration_point": 10000,
+      "gamma_predictive": 150,
+      "lambda_lateral": 0.95,
+      "lr_W": 0.95,
+      "lr_W_decay_divider": 2000,
+      "lr_W_rule": "divide_by_index",
+      "mu_y": null,
+      "n_sources": 3,
+      "neural_OUTPUT_COMP_TOL": 1e-06,
+      "neural_dynamics_iterations": 100,
+      "neural_lr_decay_divider": 200,
+      "neural_lr_rule": "divide_by_loop_index",
+      "neural_lr_start": 0.01,
+      "neural_lr_stop": 0.0001,
+      "plot_debug_during_training": false,
+      "presumed_domain": "sparse",
+      "stlambda_lr": 0.5
+    },
+    "difference_from_saved_waveform_SNR_dB": [
+      0.005212509087577644,
+      0.00013569475587260627,
+      -0.004571111496517233
+    ],
+    "effective_defaults": {
+      "C_y_init": ".2 I",
+      "Sgt": "PRE-normalization S_wavelet exactly as notebook; diagnostics only",
+      "epsilon": 1e-05,
+      "mu_y_init": "zero",
+      "save_C_y_per_debug": false
+    },
+    "execution_note": "Initial import attempt without NUMBA_CACHE_DIR failed because external env cache location is read-only. Successful full run redirected JIT cache to /tmp; failure log preserved as run_initial_cache_failure.log.",
+    "final_notebook_sha256": "ceca9364d5b49c995719f6f621e76ba4e43b1cb1e6a4ab7e0d4587b9ceade1ec",
+    "final_source_sha256": {
+      "src/bss/BSSbase.py": "b6361a80cc6c90d8b22fb36940c1b3ae13f9b302fd51b49d228791c15ddefaea",
+      "src/bss/PredictiveDecorrBSS.py": "1269aeef0e38c69f9a70104514dcd324cf256d1dfb94a4ed86be309ccf431368",
+      "src/bss/bss_utils.py": "83fd61c77292ca193aa0045068b9cb8c5ebd0e449994e31f1a439baec316a4ab",
+      "src/python_utils/dsp_utils.py": "dfc6a9b9d8c8bf06ee602fbd32bd9ece3c0b4a08234ff535145681d26ef41d4b"
+    },
+    "fit": {
+      "n_epochs": 1,
+      "shuffle_samples": true
+    },
+    "input_snr_db": 30.004388845513226,
+    "libsndfile_version": "1.2.2",
+    "max_abs_W_minus_displayed": 0.0004656959094216928,
+    "metrics": {
+      "SINR_dB": 26.169587824531398,
+      "SI_SDR_dB": [
+        25.752531548535188,
+        24.337667775717815,
+        30.525695962357243
+      ],
+      "magnitude_spectrogram_SNR_dB": [
+        28.068125620387008,
+        26.488119406748247,
+        31.510582634405505
+      ],
+      "waveform_SNR_dB": [
+        25.764064869087576,
+        24.353634614755872,
+        30.529542078503482
+      ]
+    },
+    "mixture_A": [
+      [
+        -1.130570513606414,
+        0.6962002335879178,
+        -0.4322930992376072
+      ],
+      [
+        0.7410203470920872,
+        -0.47813719563947327,
+        1.386040075814654
+      ],
+      [
+        0.12517997606558698,
+        1.1488601013308928,
+        -2.3502589985431
+      ],
+      [
+        0.18329277097305208,
+        -0.3113855871618814,
+        -0.294066104157788
+      ],
+      [
+        0.4000605095196176,
+        1.0055004908927363,
+        0.5016428603832047
+      ]
+    ],
+    "notebook": "Simulations/PredictiveBSS/PredictiveBSS_SoundSeparationExample.ipynb",
+    "notebook_sha256": "ceca9364d5b49c995719f6f621e76ba4e43b1cb1e6a4ab7e0d4587b9ceade1ec",
+    "pipeline_changes": [
+      "live plotting disabled; Sgt/debug metrics preserved",
+      "BLAS/OpenMP/Numba threads limited to 1",
+      "cached OGG files copied under /tmp and loaded directly rather than calling librosa.ex; same files, no network"
+    ],
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+    "python": "3.10.19 (main, Oct 21 2025, 16:43:05) [GCC 11.2.0]",
+    "python_executable": "/nfs/ghome/live/bbozkurt/.conda/envs/predictivebss2/bin/python",
+    "reproduction_script_sha256": "24ccaedbc19e9b156917d19aba992873663ebb0588fd00e4cc2d01aabab5c895",
+    "saved_notebook_metrics": {
+      "SINR_dB": 26.168515173766302,
+      "magnitude_spectrogram_SNR_dB": [
+        28.06,
+        26.49,
+        31.51
+      ],
+      "waveform_SNR_dB": [
+        25.75885236,
+        24.35349892,
+        30.53411319
+      ]
+    },
+    "seed": 400,
+    "shape": {
+      "S": [
+        3,
+        80000
+      ],
+      "S_wavelet": [
+        3,
+        80020
+      ],
+      "X_wavelet": [
+        5,
+        80020
+      ]
+    },
+    "software_versions": {
+      "IPython": "8.38.0",
+      "librosa": "0.11.0",
+      "matplotlib": "3.10.8",
+      "numba": "0.63.1",
+      "numpy": "2.2.6",
+      "pywt": "1.8.0",
+      "scipy": "1.15.3",
+      "soundfile": "0.13.1",
+      "soxr": "1.0.0",
+      "tqdm": "4.67.3"
+    },
+    "source_correlation": [
+      [
+        1.0,
+        -0.0018843107928831237,
+        0.028252220675249837
+      ],
+      [
+        -0.0018843107928831235,
+        1.0,
+        -0.0035119180869322246
+      ],
+      [
+        0.028252220675249833,
+        -0.0035119180869322246,
+        1.0
+      ]
+    ],
+    "source_sha256": {
+      "src/bss/BSSbase.py": "b6361a80cc6c90d8b22fb36940c1b3ae13f9b302fd51b49d228791c15ddefaea",
+      "src/bss/PredictiveDecorrBSS.py": "1269aeef0e38c69f9a70104514dcd324cf256d1dfb94a4ed86be309ccf431368",
+      "src/bss/bss_utils.py": "83fd61c77292ca193aa0045068b9cb8c5ebd0e449994e31f1a439baec316a4ab",
+      "src/python_utils/dsp_utils.py": "dfc6a9b9d8c8bf06ee602fbd32bd9ece3c0b4a08234ff535145681d26ef41d4b"
+    },
+    "spectrogram": {
+      "center": true,
+      "hop_length": 256,
+      "n_fft": 1024,
+      "pad_mode": "constant",
+      "sr": 16000,
+      "win_length": 1024,
+      "window": "hann"
+    },
+    "training_seconds": 29.06982624400007,
+    "warnings": [],
+    "wavelet": {
+      "level": 3,
+      "mode": "symmetric (pywt default)",
+      "wavelet": "db4"
+    },
+    "wavelet_normalization": [
+      2.101405218301518,
+      1.3670058396629183,
+      1.185127254047175
+    ]
+  },
+  "versions": {
+    "librosa": "0.11.0",
+    "matplotlib": "3.10.8",
+    "numpy": "2.2.6",
+    "python": "3.10.19"
+  }
+}

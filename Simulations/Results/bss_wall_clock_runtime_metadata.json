@@ -1,0 +1,914 @@
+{
+  "aggregation_environment": {
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+    "python": "3.10.19 (main, Oct 21 2025, 16:43:05) [GCC 11.2.0]",
+    "software_versions": {
+      "IPython": "8.38.0",
+      "matplotlib": "3.10.8",
+      "numpy": "2.2.6",
+      "pandas": "2.3.3"
+    }
+  },
+  "analysis_notebook": "Simulations/AnalyzeSimulationResults/Computation_Time_Comparison.ipynb",
+  "description": "Aggregation of existing initialization-and-fitting CPU wall-clock times; no benchmark rerun",
+  "input_result_files": {
+    "Antisparse": {
+      "counts_per_model_and_condition": [
+        {
+          "condition_value": 0.0,
+          "recorded_model": "BSMBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.05,
+          "recorded_model": "BSMBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.1,
+          "recorded_model": "BSMBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.15,
+          "recorded_model": "BSMBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.2,
+          "recorded_model": "BSMBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.25,
+          "recorded_model": "BSMBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.3,
+          "recorded_model": "BSMBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.35,
+          "recorded_model": "BSMBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.4,
+          "recorded_model": "BSMBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.45,
+          "recorded_model": "BSMBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.5,
+          "recorded_model": "BSMBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.0,
+          "recorded_model": "CorInfoMaxBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.05,
+          "recorded_model": "CorInfoMaxBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.1,
+          "recorded_model": "CorInfoMaxBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.15,
+          "recorded_model": "CorInfoMaxBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.2,
+          "recorded_model": "CorInfoMaxBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.25,
+          "recorded_model": "CorInfoMaxBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.3,
+          "recorded_model": "CorInfoMaxBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.35,
+          "recorded_model": "CorInfoMaxBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.4,
+          "recorded_model": "CorInfoMaxBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.45,
+          "recorded_model": "CorInfoMaxBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.5,
+          "recorded_model": "CorInfoMaxBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.0,
+          "recorded_model": "ICA_InfoMax",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.05,
+          "recorded_model": "ICA_InfoMax",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.1,
+          "recorded_model": "ICA_InfoMax",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.15,
+          "recorded_model": "ICA_InfoMax",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.2,
+          "recorded_model": "ICA_InfoMax",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.25,
+          "recorded_model": "ICA_InfoMax",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.3,
+          "recorded_model": "ICA_InfoMax",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.35,
+          "recorded_model": "ICA_InfoMax",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.4,
+          "recorded_model": "ICA_InfoMax",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.45,
+          "recorded_model": "ICA_InfoMax",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.5,
+          "recorded_model": "ICA_InfoMax",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.05,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.1,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.15,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.2,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.25,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.3,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.35,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.4,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.45,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.5,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.05,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.1,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.15,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.2,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.25,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.3,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.35,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.4,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.45,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 0.5,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        }
+      ],
+      "driver": "Simulations/PredictiveBSS/PredictiveBSS_Correlated_Antisparse_10by5.py",
+      "input_snr_values_db": [
+        30.0
+      ],
+      "path": "Simulations/Results/predictive_bss_correlated_antisparse_10by5_results.pkl",
+      "recorded_columns": [
+        "Model",
+        "seed",
+        "rho",
+        "SINR",
+        "SNR",
+        "SNRinp",
+        "execution_time"
+      ],
+      "recorded_model_names": [
+        "BSMBSS",
+        "CorInfoMaxBSS",
+        "ICA_InfoMax",
+        "LDMIBSS",
+        "PredictiveDecorrBSS"
+      ],
+      "seed_values": [
+        0,
+        100,
+        200,
+        300,
+        400,
+        500,
+        600,
+        700,
+        800,
+        900,
+        1000,
+        1100,
+        1200,
+        1300,
+        1400,
+        1500,
+        1600,
+        1700,
+        1800,
+        1900,
+        2000,
+        2100,
+        2200,
+        2300,
+        2400,
+        2500,
+        2600,
+        2700,
+        2800,
+        2900
+      ],
+      "sha256": "84839360ffa00e242a73dfe32ddb5f2fdbe29b78fd231d3fd73932635c5ea71f",
+      "sweep": {
+        "column": "rho",
+        "values": [
+          0.0,
+          0.05,
+          0.1,
+          0.15,
+          0.2,
+          0.25,
+          0.3,
+          0.35,
+          0.4,
+          0.45,
+          0.5
+        ]
+      },
+      "total_records": 1650
+    },
+    "NNSparse": {
+      "counts_per_model_and_condition": [
+        {
+          "condition_value": 5.0,
+          "recorded_model": "CorInfoMax",
+          "runs": 30
+        },
+        {
+          "condition_value": 10.0,
+          "recorded_model": "CorInfoMax",
+          "runs": 30
+        },
+        {
+          "condition_value": 15.0,
+          "recorded_model": "CorInfoMax",
+          "runs": 30
+        },
+        {
+          "condition_value": 20.0,
+          "recorded_model": "CorInfoMax",
+          "runs": 30
+        },
+        {
+          "condition_value": 25.0,
+          "recorded_model": "CorInfoMax",
+          "runs": 30
+        },
+        {
+          "condition_value": 30.0,
+          "recorded_model": "CorInfoMax",
+          "runs": 30
+        },
+        {
+          "condition_value": 5.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 10.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 15.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 20.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 25.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 30.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 5.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 10.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 15.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 20.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 25.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 30.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        }
+      ],
+      "driver": "Simulations/PredictiveBSS/PredictiveBSS_Noisy_NNSparse_10by5.py",
+      "input_snr_values_db": [
+        5.0,
+        10.0,
+        15.0,
+        20.0,
+        25.0,
+        30.0
+      ],
+      "path": "Simulations/Results/predictive_bss_noisy_nnsparse_10by5_results.pkl",
+      "recorded_columns": [
+        "Model",
+        "seed",
+        "SINR",
+        "SNR",
+        "SNRinp",
+        "execution_time"
+      ],
+      "recorded_model_names": [
+        "CorInfoMax",
+        "LDMIBSS",
+        "PredictiveDecorrBSS"
+      ],
+      "seed_values": [
+        1,
+        101,
+        201,
+        301,
+        401,
+        501,
+        601,
+        701,
+        801,
+        901,
+        1001,
+        1101,
+        1201,
+        1301,
+        1401,
+        1501,
+        1601,
+        1701,
+        1801,
+        1901,
+        2001,
+        2101,
+        2201,
+        2301,
+        2401,
+        2501,
+        2601,
+        2701,
+        2801,
+        2901
+      ],
+      "sha256": "e7c0130f48360d35fb268c378274dd0d3c1d5e804ae3ce749b111f9477d88174",
+      "sweep": {
+        "column": "SNRinp",
+        "values": [
+          5.0,
+          10.0,
+          15.0,
+          20.0,
+          25.0,
+          30.0
+        ]
+      },
+      "total_records": 540
+    },
+    "Simplex": {
+      "counts_per_model_and_condition": [
+        {
+          "condition_value": 5.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 10.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 15.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 20.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 25.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 30.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 5.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 10.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 15.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 20.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 25.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 30.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        }
+      ],
+      "driver": "Simulations/PredictiveBSS/PredictiveBSS_Noisy_Simplex_10by5.py",
+      "input_snr_values_db": [
+        5.0,
+        10.0,
+        15.0,
+        20.0,
+        25.0,
+        30.0
+      ],
+      "path": "Simulations/Results/predictive_bss_noisy_simplex_10by5_results.pkl",
+      "recorded_columns": [
+        "Model",
+        "seed",
+        "SINR",
+        "SNR",
+        "SNRinp",
+        "execution_time"
+      ],
+      "recorded_model_names": [
+        "LDMIBSS",
+        "PredictiveDecorrBSS"
+      ],
+      "seed_values": [
+        1,
+        101,
+        201,
+        301,
+        401,
+        501,
+        601,
+        701,
+        801,
+        901,
+        1001,
+        1101,
+        1201,
+        1301,
+        1401,
+        1501,
+        1601,
+        1701,
+        1801,
+        1901,
+        2001,
+        2101,
+        2201,
+        2301,
+        2401,
+        2501,
+        2601,
+        2701,
+        2801,
+        2901
+      ],
+      "sha256": "5c7ec982654f383a21ade271109719d21a655cadbd4fbed069271c5dcc77324e",
+      "sweep": {
+        "column": "SNRinp",
+        "values": [
+          5.0,
+          10.0,
+          15.0,
+          20.0,
+          25.0,
+          30.0
+        ]
+      },
+      "total_records": 360
+    },
+    "Sparse": {
+      "counts_per_model_and_condition": [
+        {
+          "condition_value": 5.0,
+          "recorded_model": "CorInfoMaxBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 10.0,
+          "recorded_model": "CorInfoMaxBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 15.0,
+          "recorded_model": "CorInfoMaxBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 20.0,
+          "recorded_model": "CorInfoMaxBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 25.0,
+          "recorded_model": "CorInfoMaxBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 30.0,
+          "recorded_model": "CorInfoMaxBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 5.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 10.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 15.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 20.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 25.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 30.0,
+          "recorded_model": "LDMIBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 5.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 10.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 15.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 20.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 25.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        },
+        {
+          "condition_value": 30.0,
+          "recorded_model": "PredictiveDecorrBSS",
+          "runs": 30
+        }
+      ],
+      "driver": "Simulations/PredictiveBSS/PredictiveBSS_Noisy_Sparse_10by5.py",
+      "input_snr_values_db": [
+        5.0,
+        10.0,
+        15.0,
+        20.0,
+        25.0,
+        30.0
+      ],
+      "path": "Simulations/Results/predictive_bss_noisy_sparse_10by5_results.pkl",
+      "recorded_columns": [
+        "Model",
+        "seed",
+        "SINR",
+        "SNR",
+        "SNRinp",
+        "execution_time"
+      ],
+      "recorded_model_names": [
+        "CorInfoMaxBSS",
+        "LDMIBSS",
+        "PredictiveDecorrBSS"
+      ],
+      "seed_values": [
+        0,
+        100,
+        200,
+        300,
+        400,
+        500,
+        600,
+        700,
+        800,
+        900,
+        1000,
+        1100,
+        1200,
+        1300,
+        1400,
+        1500,
+        1600,
+        1700,
+        1800,
+        1900,
+        2000,
+        2100,
+        2200,
+        2300,
+        2400,
+        2500,
+        2600,
+        2700,
+        2800,
+        2900
+      ],
+      "sha256": "95a366238ceea3027892d4f6bdf38ce0042a3a7183b8cb06f7f9f1bf606bebc0",
+      "sweep": {
+        "column": "SNRinp",
+        "values": [
+          5.0,
+          10.0,
+          15.0,
+          20.0,
+          25.0,
+          30.0
+        ]
+      },
+      "total_records": 540
+    }
+  },
+  "inspected_source_sha256": {
+    "Simulations/PredictiveBSS/PredictiveBSS_Correlated_Antisparse_10by5.py": "9186ae96b132efbe6a442bd713cb8d2cbdc675587f825758ba74b682ca9af24b",
+    "Simulations/PredictiveBSS/PredictiveBSS_Noisy_NNSparse_10by5.py": "1225810c82b25353a5389418a4acb6458460d1ce771de699ed47b0401f16f182",
+    "Simulations/PredictiveBSS/PredictiveBSS_Noisy_Simplex_10by5.py": "cc5dd2a6b58e34fbc6951c92fd4625bc24218ff0401478772ed94e1752361c2b",
+    "Simulations/PredictiveBSS/PredictiveBSS_Noisy_Sparse_10by5.py": "9dd4e798ff7d4f4ded4f0eb1d2365a812b97c08d788962f658038b304ddb5fed",
+    "src/bss/BSMBSS.py": "1fc9142376c9f5fe5db5a743c97065af4456cd7e17e67ce8bea5717fbd5fa130",
+    "src/bss/BSSbase.py": "b6361a80cc6c90d8b22fb36940c1b3ae13f9b302fd51b49d228791c15ddefaea",
+    "src/bss/CorInfoMaxBSS.py": "1838ae7e8f605909ced4ef1f5950d940660655ac86a3960095d81e696fa31861",
+    "src/bss/LDMIBSS.py": "1ef33ff14f91f9cd71a1b9c0aca11df86092fd639069685f6b79c2ef3ac74e33",
+    "src/bss/PredictiveDecorrBSS.py": "1269aeef0e38c69f9a70104514dcd324cf256d1dfb94a4ed86be309ccf431368",
+    "src/bss/ica_utils.py": "39bf78de47164d8e36d921e140b0cd67f3e2fd13fd03b8760bf3da4c2643a156",
+    "src/other_methods/src/CorInfoMaxBSS.py": "9c3286362220412a811ee8a5ce0da4cec682ec4039a28e4c6d6f1b084729303a",
+    "src/python_utils/python_utils.py": "d9a04aa5059955884e2484e0d65da8bf8584e9dcead496db25ee2188ab70b1b5"
+  },
+  "method_budgets_from_drivers": {
+    "BSM": {
+      "input_samples": 100000,
+      "max_inner_iterations": {
+        "Antisparse": 10
+      },
+      "streaming_passes": 1
+    },
+    "CorInfoMax (Batch)": {
+      "batch_iterations": 5000,
+      "input_samples": 10000,
+      "recorded_model": "LDMIBSS"
+    },
+    "CorInfoMax (Online)": {
+      "implementation_note": "Sparse uses src/other_methods/src/CorInfoMaxBSS.py; other domains use src/bss/CorInfoMaxBSS.py",
+      "input_samples": 100000,
+      "max_inner_iterations": {
+        "Antisparse": 250,
+        "NNSparse": 250,
+        "Sparse": 500
+      },
+      "streaming_passes": 1
+    },
+    "InfoMax ICA": {
+      "configured_max_iter": 10000,
+      "input_samples": 100000,
+      "optimization": "MNE batch extended InfoMax"
+    },
+    "PEM": {
+      "input_samples": 100000,
+      "max_inner_iterations": {
+        "Antisparse": 250,
+        "NNSparse": 100,
+        "Simplex": 100,
+        "Sparse": 100
+      },
+      "streaming_passes": 1
+    }
+  },
+  "problem_dimensions": {
+    "n_mixtures": 10,
+    "n_sources": 5
+  },
+  "producer_environment": {
+    "common_host_verified": false,
+    "cpu_model": null,
+    "note": "These fields are not recorded in the input result files.",
+    "software_versions": null,
+    "thread_configuration": null
+  },
+  "statistic": {
+    "mean": "arithmetic mean of recorded execution_time",
+    "missing_combinations": "CSV has runs=0, blank statistics and blank input budget",
+    "pooling": "conditions pooled within method/domain; 30 seeds repeated across 11 or 6 conditions",
+    "standard_deviation": "sample standard deviation, ddof=1; not a confidence interval",
+    "units": "seconds"
+  },
+  "summary_csv_sha256": "09395020db61e8ab612ca9db39178e1944ac37fc7c7af89875d64138f05a044c",
+  "timing_scope": {
+    "caveats": [
+      "hyperparameters, input budgets, inference horizons, and stopping criteria differ",
+      "ground-truth diagnostics run with plotting disabled and schedules differ by method",
+      "PEM stores a covariance-history copy per sample in the inspected implementation",
+      "current source hashes document inspected implementations, not proven historical producer revisions"
+    ],
+    "excluded": [
+      "data generation",
+      "external post-fit metrics",
+      "result serialization"
+    ],
+    "included": [
+      "construction and initialization",
+      "fit",
+      "internal diagnostics",
+      "first-use Numba JIT compilation when triggered",
+      "InfoMax ICA: MNE setup and source extraction"
+    ],
+    "timer": "time.perf_counter around initialization and fitting"
+  }
+}

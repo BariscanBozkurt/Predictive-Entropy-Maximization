@@ -1,0 +1,257 @@
+{
+  "artifact_sha256": {
+    "Simulations/AnalyzeSimulationResults/Figures/PEM_Olivetti_Face_Dictionary.pdf": "4ee91a3617ec96fbf63acbf036802e5cacbd656a111b4cf9a26bb3c2321726de",
+    "Simulations/AnalyzeSimulationResults/Figures/PEM_Olivetti_Face_Dictionary.png": "22b6136c1e7db25ac015e92be5134b67ddeb40509ca8ec8d23b79a057c0c1e63",
+    "Simulations/AnalyzeSimulationResults/Figures/PEM_Olivetti_Face_Dictionary.svg": "a9be856b372cbcf41fdd958650ab33bccadb35f4d0c28997f769088990620b21",
+    "Simulations/Results/PEM_Olivetti_Reconstruction_Errors.csv": "d527ff90d7f6fdb5c07337a866df12c34d9fc4649f6d42fc9ee2f73ec93955ce",
+    "Simulations/Results/PEM_Olivetti_Trained_State.npz": "012d80d9e229139f2e8c5230a3bf899cd24a3b99de734386f83cadf79aa96c42"
+  },
+  "baseline_config": {
+    "NMF": {
+      "alpha_H": "same",
+      "alpha_W": 0.0,
+      "beta_loss": "frobenius",
+      "init": "nndsvda",
+      "l1_ratio": 0.0,
+      "max_iter": 1000,
+      "n_components": 49,
+      "random_state": 0,
+      "shuffle": false,
+      "solver": "cd",
+      "tol": 1e-06,
+      "verbose": 0
+    },
+    "NMF_n_iter": 1000,
+    "PCA": {
+      "copy": true,
+      "iterated_power": "auto",
+      "n_components": 49,
+      "n_oversamples": 10,
+      "power_iteration_normalizer": "auto",
+      "random_state": 0,
+      "svd_solver": "auto",
+      "tol": 0.0,
+      "whiten": false
+    }
+  },
+  "convergence_notes": [
+    "NMF reached its configured 1000-iteration limit."
+  ],
+  "data": {
+    "dataset": "Olivetti faces",
+    "n_test": 50,
+    "n_train": 350,
+    "preprocess": "2x2 block average, 64x64 to 32x32",
+    "split_random_state": 0,
+    "test_scope": "held-out images, identities shared with training"
+  },
+  "description": "All 49 PEM feedforward filters and reconstruction errors",
+  "display": {
+    "contrast": "independent per-filter min/max",
+    "filter_order": "original rows of W; no selection or sorting",
+    "grid": [
+      7,
+      7
+    ],
+    "image_shape": [
+      32,
+      32
+    ]
+  },
+  "evaluation": {
+    "codes": "settled neural dynamics with frozen weights/statistics",
+    "decoder": "training-only linear ridge readout, ridge=1e-6",
+    "errors": {
+      "NMF": {
+        "test": 0.08920961297976242,
+        "train": 0.07681147120065637
+      },
+      "PCA": {
+        "test": 0.08443827109245286,
+        "train": 0.07246716480273448
+      },
+      "PEM": {
+        "test": 0.09666596709428141,
+        "train": 0.08397258402447796
+      }
+    },
+    "metric": "Frobenius reconstruction error / input Frobenius norm"
+  },
+  "notebook_at_export_sha256": "778fcec9721f9eb782d593656988053f87cd1b848afae55f6e7f16e904e03e11",
+  "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+  "python": "3.10.19 (main, Oct 21 2025, 16:43:05) [GCC 11.2.0]",
+  "software_versions": {
+    "matplotlib": "3.10.8",
+    "numba": "0.63.1",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "sklearn": "1.7.2"
+  },
+  "source_sha256": "1a4078c70cfaf0455f20dd433f92974496fb652dde146a35263382b36393f857",
+  "training": {
+    "model_seed": 7,
+    "n_epochs": 150,
+    "parameters": {
+      "epsilon": 0.002,
+      "gamma_predictive": 30.0,
+      "lambda_lateral": 0.99,
+      "lr_W": 5e-05,
+      "lr_W_decay_divider": 60000,
+      "lr_W_rule": "divide_by_index",
+      "n_sources": 49,
+      "neural_OUTPUT_COMP_TOL": 1e-07,
+      "neural_dynamics_iterations": 200,
+      "neural_lr_start": 0.1,
+      "neural_lr_stop": 0.01,
+      "normalize_W_rows": false,
+      "presumed_domain": "nnantisparse",
+      "project_W_nonnegative": true
+    },
+    "shuffle_samples": true
+  },
+  "verified_training_run": {
+    "baseline_config": {
+      "NMF": {
+        "alpha_H": "same",
+        "alpha_W": 0.0,
+        "beta_loss": "frobenius",
+        "init": "nndsvda",
+        "l1_ratio": 0.0,
+        "max_iter": 1000,
+        "n_components": 49,
+        "random_state": 0,
+        "shuffle": false,
+        "solver": "cd",
+        "tol": 1e-06,
+        "verbose": 0
+      },
+      "NMF_n_iter": 1000,
+      "PCA": {
+        "copy": true,
+        "iterated_power": "auto",
+        "n_components": 49,
+        "n_oversamples": 10,
+        "power_iteration_normalizer": "auto",
+        "random_state": 0,
+        "svd_solver": "auto",
+        "tol": 0.0,
+        "whiten": false
+      },
+      "PCA_svd_solver_effective": "randomized"
+    },
+    "config": {
+      "W": null,
+      "debug_iteration_point": 6000.0,
+      "epsilon": 0.002,
+      "gamma_predictive": 30.0,
+      "image_shape": [
+        32,
+        32
+      ],
+      "lambda_lateral": 0.99,
+      "lr_W": 5e-05,
+      "lr_W_decay_divider": 60000,
+      "lr_W_rule": "divide_by_index",
+      "n_sources": 49,
+      "neural_dynamics_iterations": 200,
+      "neural_lr_start": 0.1,
+      "neural_lr_stop": 0.01,
+      "plot_debug_during_training": false,
+      "presumed_domain": "nnantisparse",
+      "project_W_nonnegative": true,
+      "seed": 7
+    },
+    "data_split": {
+      "N_test": 50,
+      "fetch_random_state": 0,
+      "fetch_shuffle": true,
+      "split_random_state": 0
+    },
+    "dataset_cache_sha256": "47398b319d88c78459514b30b87c562313aad345b5c6a387b678d7f8177be4ba",
+    "effective_model_defaults": {
+      "epsilon": 0.002,
+      "gamma_predictive": 30.0,
+      "lambda_lateral": 0.99,
+      "lr_W": 5e-05,
+      "lr_W_decay_divider": 60000,
+      "lr_W_rule": "divide_by_index",
+      "neural_OUTPUT_COMP_TOL": 1e-07,
+      "neural_dynamics_iterations": 200,
+      "neural_lr_decay_divider": 200,
+      "neural_lr_rule": "divide_by_loop_index",
+      "neural_lr_start": 0.1,
+      "neural_lr_stop": 0.01,
+      "normalize_W_rows": false,
+      "presumed_domain": "nnantisparse",
+      "project_W_nonnegative": true,
+      "stlambda_lr": 0.1
+    },
+    "errors": {
+      "NMF": {
+        "test": 0.08920961297976242,
+        "train": 0.07681147120065637
+      },
+      "PCA": {
+        "test": 0.08443827109245286,
+        "train": 0.07246716480273448
+      },
+      "PEM": {
+        "test": 0.09666596709428141,
+        "train": 0.08397258402447796
+      }
+    },
+    "final_notebook_sha256": "8502ff965209b1d239376ac142786326b7d44824a51309d6b122ecf72024d4c3",
+    "final_source_sha256": "1a4078c70cfaf0455f20dd433f92974496fb652dde146a35263382b36393f857",
+    "fit": {
+      "n_epochs": 150,
+      "shuffle_samples": true
+    },
+    "notebook": "Simulations/PredictiveBSS/PEM_Face_Feature_Learning_V2.ipynb",
+    "notebook_sha256": "8502ff965209b1d239376ac142786326b7d44824a51309d6b122ecf72024d4c3",
+    "pem_diagnostics": {
+      "W_nonnegative": true,
+      "active_units": 49,
+      "mean_abs_offdiag_code_correlation": 0.23577301752047336
+    },
+    "pem_training_seconds": 63.491471479999745,
+    "pipeline_changes": [
+      "live plotting disabled",
+      "BLAS/OpenMP threads limited to 1",
+      "cached data directory relocated under /tmp"
+    ],
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+    "preprocess": {
+      "TS": 32,
+      "block_average": true
+    },
+    "python": "3.10.19 (main, Oct 21 2025, 16:43:05) [GCC 11.2.0]",
+    "python_executable": "/nfs/ghome/live/bbozkurt/miniconda3/envs/predictivebss/bin/python",
+    "software_versions": {
+      "IPython": "8.38.0",
+      "llvmlite": "0.46.0",
+      "matplotlib": "3.10.8",
+      "numba": "0.63.1",
+      "numpy": "2.2.6",
+      "scipy": "1.15.3",
+      "sklearn": "1.7.2",
+      "tqdm": "4.67.3"
+    },
+    "source": "src/predictive_entropy_face_nmf.py",
+    "source_sha256": "1a4078c70cfaf0455f20dd433f92974496fb652dde146a35263382b36393f857",
+    "thread_settings": {
+      "BLIS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMBA_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "total_seconds": 70.96224185000028,
+    "warnings": [
+      {
+        "category": "ConvergenceWarning",
+        "message": "Maximum number of iterations 1000 reached. Increase it to improve convergence.",
+        "stage": "nmf_fit_transform"
+      }
+    ]
+  }
+}

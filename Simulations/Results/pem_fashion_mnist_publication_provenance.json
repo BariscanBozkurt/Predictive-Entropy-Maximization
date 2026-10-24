@@ -1,0 +1,356 @@
+{
+  "baseline_dimensions": 64,
+  "classifier": "StandardScaler + LogisticRegression(max_iter=1000), all other scikit-learn defaults",
+  "classifier_fitting": "scaler and classifier fit on training representations and labels only",
+  "dataset": "Fashion-MNIST: subset of official training split; official test split unused",
+  "held_out_images": 5000,
+  "interpretation": "single seeded illustration of downstream feature utility; no optimized classification comparison",
+  "model_seed": 7,
+  "model_settings": {
+    "epsilon": 0.002,
+    "gamma_predictive": 30.0,
+    "lambda_lateral": 0.99,
+    "lr_W": 0.0001,
+    "lr_W_rule": "constant",
+    "n_sources": 64,
+    "neural_dynamics_iterations": 150,
+    "neural_lr_start": 0.1,
+    "neural_lr_stop": 0.001,
+    "normalize_W_rows": false,
+    "presumed_domain": "nnantisparse",
+    "project_W_nonnegative": true
+  },
+  "nmf_max_iter": 400,
+  "nmf_n_iter": 400,
+  "nmf_tol": 0.0001,
+  "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+  "plot": {
+    "draw_order_seed": 0,
+    "legend": "external, vector text",
+    "scatter_raster_dpi": 600
+  },
+  "shuffled_training_epochs": 10,
+  "source_sha256": "1a4078c70cfaf0455f20dd433f92974496fb652dde146a35263382b36393f857",
+  "split_seed": 0,
+  "training_images": 10000,
+  "tsne_input": "all 5000 held-out 64-dimensional PEM codes, without scaling; labels used only for coloring",
+  "tsne_parameters": {
+    "angle": 0.5,
+    "early_exaggeration": 12.0,
+    "init": "pca",
+    "learning_rate": "auto",
+    "max_iter": 1000,
+    "method": "barnes_hut",
+    "metric": "euclidean",
+    "metric_params": null,
+    "min_grad_norm": 1e-07,
+    "n_components": 2,
+    "n_iter_without_progress": 300,
+    "n_jobs": null,
+    "perplexity": 30,
+    "random_state": 0,
+    "verbose": 0
+  },
+  "verified_training_run": {
+    "baseline_config": {
+      "NMF": {
+        "alpha_H": "same",
+        "alpha_W": 0.0,
+        "beta_loss": "frobenius",
+        "init": "nndsvda",
+        "l1_ratio": 0.0,
+        "max_iter": 400,
+        "n_components": 64,
+        "random_state": 0,
+        "shuffle": false,
+        "solver": "cd",
+        "tol": 0.0001,
+        "verbose": 0
+      },
+      "NMF_n_iter": 400,
+      "PCA": {
+        "copy": true,
+        "iterated_power": "auto",
+        "n_components": 64,
+        "n_oversamples": 10,
+        "power_iteration_normalizer": "auto",
+        "random_state": 0,
+        "svd_solver": "auto",
+        "tol": 0.0,
+        "whiten": false
+      },
+      "PCA_svd_solver_effective": "covariance_eigh"
+    },
+    "classification": {
+      "NMF": 0.829,
+      "PCA": 0.8258,
+      "PEM": 0.821,
+      "raw": 0.7964
+    },
+    "classifier_config": {
+      "NMF": {
+        "LogisticRegression": {
+          "C": 1.0,
+          "class_weight": null,
+          "dual": false,
+          "fit_intercept": true,
+          "intercept_scaling": 1,
+          "l1_ratio": null,
+          "max_iter": 1000,
+          "multi_class": "deprecated",
+          "n_jobs": null,
+          "penalty": "l2",
+          "random_state": null,
+          "solver": "lbfgs",
+          "tol": 0.0001,
+          "verbose": 0,
+          "warm_start": false
+        },
+        "StandardScaler": {
+          "copy": true,
+          "with_mean": true,
+          "with_std": true
+        },
+        "n_iter_": [
+          246
+        ]
+      },
+      "PCA": {
+        "LogisticRegression": {
+          "C": 1.0,
+          "class_weight": null,
+          "dual": false,
+          "fit_intercept": true,
+          "intercept_scaling": 1,
+          "l1_ratio": null,
+          "max_iter": 1000,
+          "multi_class": "deprecated",
+          "n_jobs": null,
+          "penalty": "l2",
+          "random_state": null,
+          "solver": "lbfgs",
+          "tol": 0.0001,
+          "verbose": 0,
+          "warm_start": false
+        },
+        "StandardScaler": {
+          "copy": true,
+          "with_mean": true,
+          "with_std": true
+        },
+        "n_iter_": [
+          72
+        ]
+      },
+      "PEM": {
+        "LogisticRegression": {
+          "C": 1.0,
+          "class_weight": null,
+          "dual": false,
+          "fit_intercept": true,
+          "intercept_scaling": 1,
+          "l1_ratio": null,
+          "max_iter": 1000,
+          "multi_class": "deprecated",
+          "n_jobs": null,
+          "penalty": "l2",
+          "random_state": null,
+          "solver": "lbfgs",
+          "tol": 0.0001,
+          "verbose": 0,
+          "warm_start": false
+        },
+        "StandardScaler": {
+          "copy": true,
+          "with_mean": true,
+          "with_std": true
+        },
+        "n_iter_": [
+          111
+        ]
+      },
+      "raw": {
+        "LogisticRegression": {
+          "C": 1.0,
+          "class_weight": null,
+          "dual": false,
+          "fit_intercept": true,
+          "intercept_scaling": 1,
+          "l1_ratio": null,
+          "max_iter": 1000,
+          "multi_class": "deprecated",
+          "n_jobs": null,
+          "penalty": "l2",
+          "random_state": null,
+          "solver": "lbfgs",
+          "tol": 0.0001,
+          "verbose": 0,
+          "warm_start": false
+        },
+        "StandardScaler": {
+          "copy": true,
+          "with_mean": true,
+          "with_std": true
+        },
+        "n_iter_": [
+          470
+        ]
+      }
+    },
+    "config": {
+      "W": null,
+      "debug_iteration_point": 2000,
+      "epsilon": 0.002,
+      "gamma_predictive": 30.0,
+      "image_shape": [
+        28,
+        28
+      ],
+      "lambda_lateral": 0.99,
+      "lr_W": 0.0001,
+      "lr_W_rule": "constant",
+      "n_sources": 64,
+      "neural_dynamics_iterations": 150,
+      "neural_lr_start": 0.1,
+      "neural_lr_stop": 0.001,
+      "plot_debug_during_training": false,
+      "presumed_domain": "nnantisparse",
+      "project_W_nonnegative": true,
+      "seed": 7
+    },
+    "data_split": {
+      "N_test": 5000,
+      "N_train": 10000,
+      "global_numpy_seed": 0,
+      "selection": "np.random.choice(60000,15000,replace=False); first 10000 training, last 5000 test",
+      "source_split": "official training split, 60000 images"
+    },
+    "dataset_files": {
+      "data/FashionMNIST/raw/train-images-idx3-ubyte": {
+        "header": [
+          2051,
+          60000,
+          28,
+          28
+        ],
+        "sha256": "c59f468a2f672dc815687fe0f83887768d799fd8a3f3276145d20f83aa44d888"
+      },
+      "data/FashionMNIST/raw/train-labels-idx1-ubyte": {
+        "header": [
+          2049,
+          60000
+        ],
+        "sha256": "bad3541b69d912435c50bb6ba87bec294ff4f6a2e1246121d8633921760443d9"
+      }
+    },
+    "effective_model_defaults": {
+      "epsilon": 0.002,
+      "gamma_predictive": 30.0,
+      "lambda_lateral": 0.99,
+      "lr_W": 0.0001,
+      "lr_W_decay_divider": 50000,
+      "lr_W_rule": "constant",
+      "neural_OUTPUT_COMP_TOL": 1e-07,
+      "neural_dynamics_iterations": 150,
+      "neural_lr_decay_divider": 200,
+      "neural_lr_rule": "divide_by_loop_index",
+      "neural_lr_start": 0.1,
+      "neural_lr_stop": 0.001,
+      "normalize_W_rows": false,
+      "presumed_domain": "nnantisparse",
+      "project_W_nonnegative": true,
+      "stlambda_lr": 0.1
+    },
+    "errors": {
+      "NMF": {
+        "test": 0.24940726177455558,
+        "train": 0.24845298498311832
+      },
+      "PCA": {
+        "test": 0.22471525693497355,
+        "train": 0.22213063184820156
+      },
+      "PEM": {
+        "test": 0.27271215383619346,
+        "train": 0.27121324846559125
+      }
+    },
+    "final_notebook_sha256": "118858a441e2ce5e38857ef48a4e0d45466fc1afc9392b0995b3b17641c6e5a0",
+    "final_source_sha256": "1a4078c70cfaf0455f20dd433f92974496fb652dde146a35263382b36393f857",
+    "fit": {
+      "n_epochs": 10,
+      "shuffle_samples": true
+    },
+    "notebook": "Simulations/PredictiveBSS/PEM_FashionMNIST_Feature_Learning.ipynb",
+    "notebook_sha256": "118858a441e2ce5e38857ef48a4e0d45466fc1afc9392b0995b3b17641c6e5a0",
+    "pem_diagnostics": {
+      "W_nonnegative": true,
+      "active_units": 64,
+      "mean_abs_offdiag_code_correlation": 0.11283750185164303
+    },
+    "pem_training_seconds": 68.47961819400007,
+    "pipeline_changes": [
+      "live plotting disabled",
+      "BLAS/OpenMP threads limited to 1",
+      "local IDX loaded as uint8 with stdlib struct and numpy; exact torchvision FashionMNIST pixel/label representation"
+    ],
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+    "python": "3.10.19 (main, Oct 21 2025, 16:43:05) [GCC 11.2.0]",
+    "python_executable": "/nfs/ghome/live/bbozkurt/miniconda3/envs/predictivebss/bin/python",
+    "software_versions": {
+      "IPython": "8.38.0",
+      "llvmlite": "0.46.0",
+      "matplotlib": "3.10.8",
+      "numba": "0.63.1",
+      "numpy": "2.2.6",
+      "scipy": "1.15.3",
+      "sklearn": "1.7.2",
+      "tqdm": "4.67.3"
+    },
+    "source": "src/predictive_entropy_face_nmf.py",
+    "source_sha256": "1a4078c70cfaf0455f20dd433f92974496fb652dde146a35263382b36393f857",
+    "thread_settings": {
+      "BLIS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMBA_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "total_seconds": 194.05262841900094,
+    "tsne_config": {
+      "angle": 0.5,
+      "early_exaggeration": 12.0,
+      "init": "pca",
+      "learning_rate": "auto",
+      "max_iter": 1000,
+      "method": "barnes_hut",
+      "metric": "euclidean",
+      "metric_params": null,
+      "min_grad_norm": 1e-07,
+      "n_components": 2,
+      "n_iter_without_progress": 300,
+      "n_jobs": null,
+      "perplexity": 30,
+      "random_state": 0,
+      "verbose": 0
+    },
+    "tsne_result": {
+      "kl_divergence_": 1.5463801622390747,
+      "learning_rate_": 104.16666666666667,
+      "n_iter_": 999
+    },
+    "warnings": [
+      {
+        "category": "ConvergenceWarning",
+        "message": "Maximum number of iterations 400 reached. Increase it to improve convergence.",
+        "stage": "nmf_fit_transform"
+      }
+    ]
+  },
+  "versions": {
+    "matplotlib": "3.10.8",
+    "numpy": "2.2.6",
+    "python": "3.10.19",
+    "scikit_learn": "1.7.2"
+  }
+}
